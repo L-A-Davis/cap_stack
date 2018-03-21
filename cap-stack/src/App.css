@@ -2,17 +2,71 @@
   text-align: center;
 }
 
+h1.ui.header {
+  background-color: #e20048;
+  /* dark pink */
+  color: white;
+  margin-top: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 4%;
+  height: auto;
+}
+
+.Starter-Page-Item {
+  padding: 1%;
+  /* width: 100%; */
+}
+
+.Starter-Page-Item .ui.button {
+  background-color:  #00B060;
+    /* darker green */
+  color: white;
+}
+
+.Starter-Page-Item .ui.button:hover {
+  background-color:  #36D88E;
+  /* light green */
+  color: black;
+}
+
+
+h2 {
+  background-color: #ff4500;
+  /* tomato red */
+}
+
+h3 {
+  /* background-color: #00B060; */
+  /* darker green */
+}
+
+h4 {
+  background-color: #6BE400
+  /* lime green */
+}
+
+button {
+  background-color: #36D88E;
+  /* light green */
+}
+
+button {
+  background-color: #f16c97
+  /* light pink */
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+/*
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-}
+} */
 
 .App-title {
   font-size: 1.5em;
