@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form }  from 'semantic-ui-react'
+import { Searh, Grid, Header, Form }  from 'semantic-ui-react'
 import { updateCompanySearch,  setCurrentCompany } from '../actions'
 import { connect } from 'react-redux'
 
@@ -10,6 +10,16 @@ class SearchExistingCompanies extends React.Component {
       CompanyToSearchFor: e.target.value
     })
   }
+
+
+  componentWillMount() {
+     this.resetComponent()
+   }
+
+ resetComponent = () => this.setState({
+   isLoading: false,
+   results: [],
+   value: '' })
 
  handleCompanySearch = () => {
    let companies = this.props.allCompanies
