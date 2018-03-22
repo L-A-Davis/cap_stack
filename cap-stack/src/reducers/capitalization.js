@@ -5,11 +5,39 @@ export default (state = [], action) => {
         ...state,
         allCompanies: action.payload
       }
-    case 'FETCH_CAPITALIZATION':
+
+    case 'SET_CURRENT_COMPANY':
       return {
         ...state,
-        CompanyCapitalization: action.payload
+        currentCompany: action.payload
       }
+
+    case 'UPDATE_COMPANY_SEARCH':
+    return {
+      ...state, ...action.payload
+    }
+
+    case 'SHOW_NEW_COMPANY_FORM':
+      return {
+        ...state,
+          showForms: {...state.showForms, showNewCompanyForm: true
+          }
+      }
+
+    case "UPDATE_NEW_COMPANY_FORM":
+        return {
+          ...state,
+          NewCompanyForm: {...state.NewCompanyForm, ...action.payload}
+        }
+
+    case "SAVE_NEW_COMPANY":
+      return {
+        ...state,
+        selectedCompany: {...state.selectedCompany, ...action.payload
+        },
+        NewCompanyForm: {}
+      }
+
     default:
      return state;
   }

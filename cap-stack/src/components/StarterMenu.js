@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Grid, Segment, Header } from 'semantic-ui-react'
 import NewCompanyButton from '../components/NewCompanyButton'
 import SearchExistingCompanies from '../components/SearchExistingCompanies'
+import { fetchExistingCompanies } from '../actions'
+import { connect } from 'react-redux'
 
-export default class StarterMenu extends Component {
-  state = {}
+class StarterMenu extends React.Component {
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  componentDidMount() {
+    this.props.fetchExistingCompanies()
+  }
 
   render() {
-    const { activeItem } = this.state
-
     return (
       <Segment raised>
         <Grid
         textAlign='center'
         centered
-        style={{ maxWidth: 500 }}
+        style={{ maxWidth: 600 }}
         >
         <Grid.Row centered>
               <Header as="h3">
@@ -27,7 +28,7 @@ export default class StarterMenu extends Component {
           <Grid.Column textAlign='center'>
             <SearchExistingCompanies />
           </Grid.Column>
-          <Grid.Column textAlign='center'> 
+          <Grid.Column textAlign='center'>
             <NewCompanyButton />
           </Grid.Column>
          </Grid.Row>
@@ -36,3 +37,6 @@ export default class StarterMenu extends Component {
     )
   }
 }
+
+
+  export default connect(state=> {return {allCompanies: state.capitalization.allCompanies}}, { fetchExistingCompanies })(StarterMenu)

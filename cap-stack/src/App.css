@@ -7,7 +7,7 @@ h1.ui.header {
   /* dark pink */
   color: white;
   margin-top: 0;
-  padding-top: 1%;
+  padding-top: 1.5%;
   padding-bottom: 1%;
   margin-bottom: 4%;
   height: auto;
@@ -18,16 +18,20 @@ h1.ui.header {
   /* width: 100%; */
 }
 
-.Starter-Page-Item .ui.button {
-  background-color:  #00B060;
+.Starter-Page-Item .ui.button, .ui.button{
+  background:  #00B060;
     /* darker green */
   color: white;
 }
 
 .Starter-Page-Item .ui.button:hover {
-  background-color:  #36D88E;
+  background:  #36D88E;
   /* light green */
   color: black;
+}
+
+.input #company-search + button.ui.button {
+  border-radius: .28571429rem;
 }
 
 

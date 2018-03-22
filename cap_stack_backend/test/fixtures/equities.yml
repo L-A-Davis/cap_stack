@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  issuance_date: 2018-03-21
+  shares: 1.5
+  gross_proceeds: 1.5
+  net_proceeds: 1.5
+  gross_spread: 1.5
+  issuance_discount: 1.5
+  current_dividend_rate: 1.5
+  current_price: 1.5
+
+two:
+  name: MyString
+  issuance_date: 2018-03-21
+  shares: 1.5
+  gross_proceeds: 1.5
+  net_proceeds: 1.5
+  gross_spread: 1.5
+  issuance_discount: 1.5
+  current_dividend_rate: 1.5
+  current_price: 1.5

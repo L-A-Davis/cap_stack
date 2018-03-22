@@ -1,6 +1,7 @@
 import React from 'react';
-import { Header, Grid, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import StarterMenu from '../components/StarterMenu'
+import NewCompanyForm from '../components/NewCompanyForm'
 
 class Companies extends React.Component {
   render () {
@@ -11,6 +12,9 @@ class Companies extends React.Component {
         verticalAlign='top'
       >
       < StarterMenu />
+      <Grid.Row>
+      < NewCompanyForm />
+      </Grid.Row>
       </Grid>
     )
   }
