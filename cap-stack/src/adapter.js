@@ -21,10 +21,11 @@ const getCapitalization = (company_id) => {
 }
 
 const addCompany = (c) => {
+  debugger
   return fetch(`${API_ROOT}/companies`, {
     method: 'POST',
     headers: headers(),
-    body: JSON.stringify({company: c})
+    body: JSON.stringify({company: {name: c.Company_name, ticker: c.Company_ticker }})
   }).then(res => res.json())
 }
 

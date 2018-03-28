@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateNewCompanyForm, saveNewCompany } from '../actions';
+import { updateNewCompanyForm, saveNewCompany, setCurrentCompany } from '../actions';
 import { Segment, Form, Grid, Header } from 'semantic-ui-react'
 
 
@@ -12,6 +12,12 @@ class NewCompanyForm extends React.Component{
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = this.props.NewCompanyForm
+    this.props.saveNewCompany(formData)
+  }
+
   render (){
     return (
       <Segment raised >
@@ -21,9 +27,22 @@ class NewCompanyForm extends React.Component{
         textAlign='center'
         centered
         style={{ maxWidth: 600 }}>
-      <Form>
-      <Form.Input label="Company Name" name="Company_name" />
-      <Form.Input label="Company Ticker" name="Company_ticker" />
+      <Form onSubmit={this.handleSubmit} >
+      <Form.Input
+        type="text"
+        label="Company Ticker"
+        name="Company_ticker"
+        value={this.props.NewCompanyForm.Company_ticker}
+        onChange={this.handleChange}
+         />
+      <Form.Input
+        type="text"
+        label="Company Name"
+        name="Company_name"
+        value={this.props.NewCompanyForm.Company_name}
+        onChange={this.handleChange}
+         />
+
       <Form.Button>Submit</Form.Button>
       </Form>
       </Grid>
@@ -32,4 +51,4 @@ class NewCompanyForm extends React.Component{
   }
 }
 
-export default connect (state => {return {NewCompanyForm: state.capitalization.NewCompanyForm}}, { updateNewCompanyForm, saveNewCompany})(NewCompanyForm);
+export default connect (state => {return {NewCompanyForm: state.capitalization.NewCompanyForm}}, { updateNewCompanyForm, saveNewCompany, setCurrentCompany})(NewCompanyForm);

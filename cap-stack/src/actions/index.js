@@ -17,13 +17,13 @@ export function updateCompanySearch(inputData) {
 }
 
 
-export function showNewCompanyForm (inputData) {
-  return { type: "SHOW_NEW_COMPANY_FORM", payload: inputData};
+export function showNewCompanyForm () {
+  return { type: "SHOW_NEW_COMPANY_FORM", };
 }
 
 export function saveNewCompany(formData) {
   return dispatch => {
-    adapter.saveNewCompany(formData).then(resp => {
+    adapter.addCompany(formData).then(resp => {
       dispatch({ type: 'SAVE_NEW_COMPANY', payload: resp})
     })
   }

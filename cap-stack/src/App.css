@@ -18,13 +18,13 @@ h1.ui.header {
   /* width: 100%; */
 }
 
-.Starter-Page-Item .ui.button, .ui.button{
+.Starter-Page-Item .ui.button, .ui.button, button.ui.button {
   background:  #00B060;
     /* darker green */
   color: white;
 }
 
-.Starter-Page-Item .ui.button:hover {
+.Starter-Page-Item .ui.button:hover, button.ui.button:hover {
   background:  #36D88E;
   /* light green */
   color: black;

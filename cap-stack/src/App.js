@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import adapter from './adapter'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import AppHeader from './components/AppHeader'
-import Companies from './containers/Companies'
+import StartPage from './containers/StartPage'
+
 
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
        <AppHeader />
-       <Companies />
+       <Switch>
+          <Route exact path="/" component={StartPage} />
+          <Redirect to="/" />
+       </Switch>
       </div>
+      </Router>
     );
   }
 }

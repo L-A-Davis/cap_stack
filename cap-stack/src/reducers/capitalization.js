@@ -1,4 +1,15 @@
-export default (state = [], action) => {
+export default (state = {
+  allCompanies: [],
+  currentCompany: [],
+  NewCompanyForm: {
+    Company_ticker: '',
+    Company_name: '',
+  },
+  showForms: {
+    showNewCompanyForm: false
+  }
+
+}, action) => {
   switch (action.type) {
     case 'FETCH_COMPANIES':
       return {
@@ -33,7 +44,7 @@ export default (state = [], action) => {
     case "SAVE_NEW_COMPANY":
       return {
         ...state,
-        selectedCompany: {...state.selectedCompany, ...action.payload
+        currentCompany: {...state.currentCompany, ...action.payload
         },
         NewCompanyForm: {}
       }
