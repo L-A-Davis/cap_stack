@@ -8,7 +8,7 @@ export function fetchExistingCompanies() {
   };
 }
 
-export function setCurrentCompany(company) {
+export function setcurrentcompany(company) {
   return { type: "SET_CURRENT_COMPANY", payload: company }
 }
 

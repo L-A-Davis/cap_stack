@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import DebtShow from './DebtShow'
 import EquityShow from './EquityShow'
 import PreferredShow from './PreferredShow'
+import DebtList from '../components/DebtList'
 
 class CompanyShow extends React.Component {
 
@@ -15,16 +16,19 @@ class CompanyShow extends React.Component {
     const company = this.props.company
     return (
       <div>
-        <Switch>
-          <Route path={`${this.props.match.url}/:debtId`} component={DebtShow} />
-          <Route path={`${this.props.match.url}/:equityId`} component={EquityShow} />
-          <Route path={`${this.props.match.url}/:preferredId`} component={PreferredShow} />
-          <Route exact path={this.props.match.url} render={() => (
-              <div>
-                  <p> company.name</p>
-              </div>
-            )} />
-       </Switch>
+      <Switch>
+
+      <Route exact path={`${this.props.match.url}/:debtId`} render={   (routerProps) => {return <DebtShow history={routerProps.history} /> }} />
+
+        <Route exact path={`${this.props.match.url}/:equityId`} component={EquityShow} />
+        <Route exact path={`${this.props.match.url}/:preferredId`} component={PreferredShow} />
+        <Route exact path={this.props.match.url} render={() => (
+            <div>
+                <p> {company.name}</p>
+
+            </div>
+          )} />
+     </Switch>
       </div>
     )
   }
@@ -32,7 +36,7 @@ class CompanyShow extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const company = state.capitalization.allCompanies.find(company => company.id === ownProps.match.params.companyId)
+  const company = state.capitalization.currentCompany
 
   if (company) {
     return { company }
@@ -42,4 +46,4 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-  export default connect(mapStateToProps)(CompanyShow)
+  export default withRouter(connect(mapStateToProps)(CompanyShow))

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const DebtShow = ({ pig }) =>
   <div>
-      <p> this.props.pig.name</p>
+      <p> {this.props.pig.name} </p>
   </div>;
 
 

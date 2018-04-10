@@ -26,7 +26,9 @@ class StarterMenu extends React.Component {
         </Grid.Row>
         <Grid.Row centered columns={2} textAlign='center'>
           <Grid.Column textAlign='center'>
-            <SearchExistingCompanies />
+            <SearchExistingCompanies
+              history={this.props.history}
+            />
           </Grid.Column>
           <Grid.Column textAlign='center'>
             <NewCompanyButton />

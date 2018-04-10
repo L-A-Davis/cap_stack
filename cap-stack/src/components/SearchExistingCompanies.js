@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { Search, Grid, Header, Form }  from 'semantic-ui-react'
-import { setCurrentCompany } from '../actions'
+import { setcurrentcompany } from '../actions'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 // need to install lodash
 
 class SearchExistingCompanies extends React.Component {
-
 
   componentWillMount() {
      this.resetComponent()
@@ -19,9 +18,11 @@ class SearchExistingCompanies extends React.Component {
 
  handleResultSelect = (e, { result }) => {
     this.setState({
-     value: result
+     value: result.name
    })
-   this.props.setCurrentCompany(this.state.value)
+   this.props.setcurrentcompany(result)
+   debugger
+   this.props.history.push(`/start/${result.id}`)
  }
 
  handleSearchChange = (e, { value }) => {
@@ -29,12 +30,12 @@ class SearchExistingCompanies extends React.Component {
        isLoading: true,
        value
      })
-
+  console.log(this.state)
      setTimeout(() => {
        if (this.state.value.length < 1 ) return this.resetComponent()
 
        const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-       const isMatch = result => re.test(result.name) || re.test(result.ticker)
+       const isMatch = result => re.test(result.name)
 
        this.setState({
          isLoading: false,
@@ -42,11 +43,6 @@ class SearchExistingCompanies extends React.Component {
        })
      }, 300)
    }
-
- handleSubmit = (e) => {
-   e.preventDefault();
-   let company = this.handleCompanySearch(); this.props.setCurrentCompany(company)
- }
 
 
   render() {
@@ -56,14 +52,14 @@ class SearchExistingCompanies extends React.Component {
       <div className="Starter-Page-Item">
       <Grid>
        <Grid.Column width={8}>
-        <Search
-          loading={isLoading}
-          onResultsSelect={this.handleResultSelect}
-          onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
-          results={results}
-          value={value}
-          {...this.props}
-          />
+       <Search
+              loading={isLoading}
+              onResultSelect={this.handleResultSelect}
+              onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+              results={results}
+              value={value}
+              {...this.props}
+            />
         </Grid.Column>
       </Grid>
       </div>
@@ -71,7 +67,7 @@ class SearchExistingCompanies extends React.Component {
   }
 }
 
-export default connect (state => {return {  allCompanies:state.capitalization.allCompanies}}, {  setCurrentCompany})(SearchExistingCompanies);
+export default connect (state => {return {allCompanies: state.capitalization.allCompanies, currentCompany: state.capitalization.currentCompany}}, {  setcurrentcompany})(SearchExistingCompanies);
 
 // need to add this to results selection
 // this.props.history.push('/:company_id')
@@ -104,3 +100,11 @@ export default connect (state => {return {  allCompanies:state.capitalization.al
 //   </Form.Group>
 //   </Form>
 // </div>
+
+
+// const isMatch = result => re.test(result.name) || re.test(result.ticker)
+
+// handleSubmit = (e) => {
+//   e.preventDefault();
+//   let company = this.handleCompanySearch(); this.props.setCurrentCompany(company)
+// }

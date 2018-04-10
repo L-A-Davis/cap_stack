@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateNewCompanyForm, saveNewCompany, setCurrentCompany } from '../actions';
+import { updateNewCompanyForm, saveNewCompany, setcurrentcompany } from '../actions';
 import { Segment, Form, Grid, Header } from 'semantic-ui-react'
 
 
@@ -16,6 +16,7 @@ class NewCompanyForm extends React.Component{
     e.preventDefault()
     const formData = this.props.NewCompanyForm
     this.props.saveNewCompany(formData)
+    this.props.history.push(`/start/${this.props.currentCompany.id}`)
   }
 
   render (){
@@ -51,4 +52,4 @@ class NewCompanyForm extends React.Component{
   }
 }
 
-export default connect (state => {return {NewCompanyForm: state.capitalization.NewCompanyForm}}, { updateNewCompanyForm, saveNewCompany, setCurrentCompany})(NewCompanyForm);
+export default connect (state => {return {NewCompanyForm: state.capitalization.NewCompanyForm, currentCompany: state.capitalization.currentCompany}}, { updateNewCompanyForm, saveNewCompany, setcurrentcompany})(NewCompanyForm);

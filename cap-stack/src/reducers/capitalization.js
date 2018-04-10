@@ -46,7 +46,10 @@ export default (state = {
         ...state,
         currentCompany: {...state.currentCompany, ...action.payload
         },
-        NewCompanyForm: {}
+        NewCompanyForm: {
+          Company_ticker: '',
+          Company_name: ''},
+        showForms: {...state.showForms, showNewCompanyForm: false }
       }
 
     default:
