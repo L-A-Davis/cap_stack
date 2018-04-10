@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import DebtShow from './DebtShow'
 import EquityShow from './EquityShow'
 import PreferredShow from './PreferredShow'
-import DebtList from '../components/DebtList'
+import CapList from '../components/CapList'
 
 class CompanyShow extends React.Component {
 
@@ -25,7 +25,15 @@ class CompanyShow extends React.Component {
         <Route exact path={this.props.match.url} render={() => (
             <div>
                 <p> {company.name}</p>
-
+                  {company.debts.length > 0 &&
+                    <CapList items={company.debts} type="debt" companyId={company.id}/>
+                  }
+                  {company.equities.length > 0 &&
+                    <CapList items={company.equities} type="equtiy" companyId={company.id}/>
+                  }
+                  {company.preferreds.length > 0 &&
+                    <CapList items={company.preferred} type="preferred" companyId={company.id}/>
+                  }
             </div>
           )} />
      </Switch>

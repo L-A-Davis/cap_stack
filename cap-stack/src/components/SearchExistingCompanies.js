@@ -21,7 +21,6 @@ class SearchExistingCompanies extends React.Component {
      value: result.name
    })
    this.props.setcurrentcompany(result)
-   debugger
    this.props.history.push(`/start/${result.id}`)
  }
 

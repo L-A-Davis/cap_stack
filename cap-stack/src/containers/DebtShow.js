@@ -2,19 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-const DebtShow = ({ pig }) =>
+const DebtShow = ({ debt }) =>
   <div>
-      <p> {this.props.pig.name} </p>
+      <p> {this.props.debt.name} </p>
   </div>;
 
 
 const mapStateToProps = (state, ownProps) => {
-  const pig = state.capitalization.currentCompany.debts.find(debt => debt.id === +ownProps.match.params.debtId)
+  const debt = state.capitalization.currentCompany.debts.find(debt => debt.id === +ownProps.match.params.debtId)
 
-  if (pig) {
-    return { pig }
+  if (debt) {
+    return { debt }
   } else {
-    return { pig: {} }
+    return { debt: {} }
   }
 };
 
